@@ -7,7 +7,11 @@
   "background": {
     "service_worker": "background.js"
   },
-  "permissions": ["storage", "activeTab", "scripting"],
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
@@ -17,11 +21,40 @@
       "128": "/images/get_started128.png"
     }
   },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "dict/Websters/*.json"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
   "content_scripts": [
     {
-      "matches": ["https://*.ted.com/talks/*"],
-      "css": ["style.css"],
-      "js": ["content_ted.js"]
+      "matches": [
+        "https://*.ted.com/talks/*"
+      ],
+      "css": [
+        "style.css"
+      ],
+      "js": [
+        "content_scripts.js",
+        "content_ted.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://www.youtube.com/watch?*"
+      ],
+      "css": [
+        "style.css"
+      ],
+      "js": [
+        "content_scripts.js",
+        "content_youtube.js"
+      ]
     }
   ],
   "icons": {
